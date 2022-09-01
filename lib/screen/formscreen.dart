@@ -80,7 +80,13 @@ class _FormScreenState extends State<FormScreen> {
                       "บันทึกข้อมูล",
                       style: TextStyle(fontSize: 20),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      formKey.currentState?.save();
+                      print("${myStudent.fname}");
+                      print("${myStudent.lname}");
+                      print("${myStudent.email}");
+                      print("${myStudent.score}");
+                    },
                   ),
                 )
               ],
