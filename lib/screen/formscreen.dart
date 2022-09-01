@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_firebase/model/student.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 
 class FormScreen extends StatefulWidget {
   const FormScreen({super.key});
@@ -33,6 +34,7 @@ class _FormScreenState extends State<FormScreen> {
                   style: TextStyle(fontSize: 20),
                 ),
                 TextFormField(
+                  validator: RequiredValidator(errorText: "กรุณาป้อนชื่อ"),
                   onSaved: (String? fname) {
                     myStudent.fname = fname!;
                   },
@@ -45,6 +47,7 @@ class _FormScreenState extends State<FormScreen> {
                   style: TextStyle(fontSize: 20),
                 ),
                 TextFormField(
+                  validator: RequiredValidator(errorText: "กรุณาป้อนนามสกุล"),
                   onSaved: (String? lname) {
                     myStudent.lname = lname!;
                   },
@@ -57,6 +60,7 @@ class _FormScreenState extends State<FormScreen> {
                   style: TextStyle(fontSize: 20),
                 ),
                 TextFormField(
+                  validator: RequiredValidator(errorText: "กรุณาป้อนอีเมล"),
                   onSaved: (String? email) {
                     myStudent.email = email!;
                   },
@@ -69,6 +73,7 @@ class _FormScreenState extends State<FormScreen> {
                   style: TextStyle(fontSize: 20),
                 ),
                 TextFormField(
+                  validator: RequiredValidator(errorText: "กรุณาป้อนคะแนน"),
                   onSaved: (String? score) {
                     myStudent.score = score!;
                   },
@@ -81,11 +86,11 @@ class _FormScreenState extends State<FormScreen> {
                       style: TextStyle(fontSize: 20),
                     ),
                     onPressed: () {
-                      formKey.currentState?.save();
-                      print("${myStudent.fname}");
-                      print("${myStudent.lname}");
-                      print("${myStudent.email}");
-                      print("${myStudent.score}");
+                      if (formKey.currentState!.validate()) {
+                        formKey.currentState?.save();
+                        print(
+                            "ข้อมูล =${myStudent.fname}${myStudent.lname}${myStudent.email}${myStudent.score}");
+                      }
                     },
                   ),
                 )
