@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_firebase/model/student.dart';
 
 class FormScreen extends StatefulWidget {
   const FormScreen({super.key});
@@ -11,6 +12,7 @@ class FormScreen extends StatefulWidget {
 
 class _FormScreenState extends State<FormScreen> {
   final formKey = GlobalKey<FormState>();
+  Student myStudent = Student(email: '', fname: '', lname: '', score: '');
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,11 @@ class _FormScreenState extends State<FormScreen> {
                   "ชื่อ",
                   style: TextStyle(fontSize: 20),
                 ),
-                TextFormField(),
+                TextFormField(
+                  onSaved: (String? fname) {
+                    myStudent.fname = fname!;
+                  },
+                ),
                 SizedBox(
                   height: 15,
                 ),
@@ -38,7 +44,11 @@ class _FormScreenState extends State<FormScreen> {
                   "นามสกุล",
                   style: TextStyle(fontSize: 20),
                 ),
-                TextFormField(),
+                TextFormField(
+                  onSaved: (String? lname) {
+                    myStudent.lname = lname!;
+                  },
+                ),
                 SizedBox(
                   height: 15,
                 ),
@@ -46,7 +56,11 @@ class _FormScreenState extends State<FormScreen> {
                   "อีเมล",
                   style: TextStyle(fontSize: 20),
                 ),
-                TextFormField(),
+                TextFormField(
+                  onSaved: (String? email) {
+                    myStudent.email = email!;
+                  },
+                ),
                 SizedBox(
                   height: 15,
                 ),
@@ -54,7 +68,11 @@ class _FormScreenState extends State<FormScreen> {
                   "คะแนน",
                   style: TextStyle(fontSize: 20),
                 ),
-                TextFormField(),
+                TextFormField(
+                  onSaved: (String? score) {
+                    myStudent.score = score!;
+                  },
+                ),
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
