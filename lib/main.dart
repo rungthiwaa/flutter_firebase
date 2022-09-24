@@ -46,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
               text: "บันทึกคะแนนสอบ",
             ),
             Tab(
-              text: "รายชื่อนักเรียน",
+              text: "รายงานคะแนน",
             )
           ],
         ),
